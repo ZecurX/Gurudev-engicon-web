@@ -11,24 +11,27 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: 'Metro Rail Extension',
+      title: 'Construction Of Highways',
       category: 'Infrastructure',
-      description: 'Urban metro railway construction and station development with modern facilities and sustainable design.',
-      status: 'Completed'
+      description: 'Delivering high-quality highway construction for a better tomorrow.',
+      status: 'Completed',
+      image: '/images/image7.png'
     },
     {
       id: 2,
-      title: 'Corporate Tech Park',
+      title: 'Construction Bridges',
       category: 'Commercial',
-      description: 'Multi-story office complex with modern amenities, green spaces, and smart building technology.',
-      status: 'Ongoing'
+      description: 'Creating bridges that stand firm and shape the future of infrastructure.',
+      status: 'Completed',
+      image: '/images/image6.png'
     },
     {
       id: 3,
-      title: 'Highway Expansion Project',
+      title: 'Buildings Construction',
       category: 'Transportation',
-      description: 'Six-lane highway construction with advanced drainage systems and safety infrastructure.',
-      status: 'Completed'
+      description: 'Delivering high-quality building construction solutions.',
+      status: 'Completed',
+      image: '/images/image8.png'
     }
   ];
 
@@ -42,10 +45,9 @@ const Projects: React.FC = () => {
           {projects.map((project, index) => (
             <div key={project.id} className={`project-card-horizontal ${index % 2 === 1 ? 'reverse' : ''}`}>
               <div className="project-image-large">
-                <div className="image-placeholder-large">
-                  <span>{project.category}</span>
-                </div>
-              </div>
+  <img src={project.image} alt={project.title} />
+</div>
+
               <div className="project-info-card">
                 <span className={`project-badge ${project.status.toLowerCase()}`}>
                   {project.status}

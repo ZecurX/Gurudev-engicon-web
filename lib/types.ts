@@ -19,6 +19,7 @@ export interface Project {
   category: string;
   description: string;
   status: 'Completed' | 'Ongoing' | 'Planning';
+  image: string; 
 }
 
 // Contact form types
