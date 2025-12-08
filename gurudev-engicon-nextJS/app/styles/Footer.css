@@ -1,0 +1,164 @@
+/* Footer - Light Modern Design */
+.footer {
+  background: #f5f3ef;
+  color: #0a0a0a;
+  padding: 4rem 0 0;
+  border-top: 1px solid #e5e3df;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1.5fr;
+  gap: 4rem;
+  padding-bottom: 3.5rem;
+}
+
+/* Brand Section */
+.footer-brand h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #0a0a0a;
+  letter-spacing: -0.5px;
+}
+
+.footer-description {
+  color: #5a5a5a;
+  line-height: 1.7;
+  margin: 0;
+  font-size: 0.9rem;
+  max-width: 280px;
+}
+
+/* Section Headings */
+.footer-section h4 {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #0a0a0a;
+  letter-spacing: 0;
+}
+
+/* Links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.85rem;
+}
+
+.footer-links a {
+  color: #5a5a5a;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: #0a0a0a;
+}
+
+/* Contact Section */
+.footer-contact-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-contact-phone {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin-bottom: 0.25rem;
+}
+
+.footer-contact-email {
+  font-size: 0.95rem;
+  color: #0a0a0a;
+  margin: 0 0 1.25rem 0;
+  font-weight: 500;
+}
+
+.footer-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-social-links a {
+  color: #5a5a5a;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.3s ease;
+}
+
+.footer-social-links a:hover {
+  color: #0a0a0a;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  border-top: 1px solid #e5e3df;
+  padding: 1.75rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-copyright-text,
+.footer-developer {
+  margin: 0;
+  color: #5a5a5a;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.footer-copyright-text strong,
+.footer-developer strong {
+  color: #0a0a0a;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .footer {
+    padding: 3.5rem 0 0;
+  }
+  
+  .footer-content {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 0 0;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+}
