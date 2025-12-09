@@ -40,12 +40,15 @@ const Hero: React.FC = () => {
         </div>
         
         <div className="hero-image">
-          <div className="image-wrapper">
-            <div className="image-placeholder">
-              <span>Landmark Architecture</span>
-            </div>
-          </div>
-        </div>
+        <div className="image-wrapper">
+    <img 
+      src="/images/images5.png" 
+      alt="Hero Image" 
+      className="hero-img"
+    />
+  </div>
+</div>
+
       </div>
     </section>
   );

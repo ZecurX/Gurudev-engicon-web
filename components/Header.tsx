@@ -26,7 +26,9 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header-container">
-        <div className="logo">builderz</div>
+        <div className="logo">
+          <img src="/logo.png" alt="Company Logo" className="logo-img" />
+        </div>
 
         <button className="mobile-menu-btn" onClick={toggleMenu} aria-label="Toggle menu">
           <div className="hamburger">

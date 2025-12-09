@@ -114,6 +114,23 @@
   transition: all 0.3s ease;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo img,
+.logo-img {
+  height: 65px;        /* PERFECT SIZE */
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+
+
+
 /* Mobile Menu */
 @media (max-width: 992px) {
   .mobile-menu-btn {
