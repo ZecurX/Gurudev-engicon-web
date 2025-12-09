@@ -47,7 +47,7 @@ const Header: React.FC = () => {
             <li><a href="#contact" className="nav-link" onClick={() => scrollToSection('contact')}>Contact</a></li>
           </ul>
           <div className="header-actions">
-            <span className="header-phone">Call Us: +(990) 183 - 4969563</span>
+            <span className="header-phone">Call Us: +(080) 46055690</span>
             <button className="header-cta" onClick={() => scrollToSection('contact')}>
               Get In Touch
             </button>
