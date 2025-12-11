@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
       <div className="container">
         <div className="footer-content">
           <div className="footer-section footer-brand">
-            <h3>builderz</h3>
+            <h3>Gurudev Engicon Privite Limited. </h3>
             <p className="footer-description">
               We are creators of transformative spaces that inspire, innovate, and endure.
             </p>
@@ -39,8 +39,8 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="footer-section footer-contact-section">
-            <h4 className="footer-contact-phone">+(080)46055690</h4>
-            <p className="footer-contact-email">info@gurudevengicon.com</p>
+            <h4 className="footer-contact-phone">+ 08046055690</h4>
+            <p className="footer-contact-email">PRAMODSINGHBHAGALPUR@GMAIL.COM</p>
           </div>
         </div>
 

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import '../app/styles/Header.css';
-
+import Link from 'next/link';
 /**
  * Header Component - Client Component
  * Navigation bar with company logo and menu items
@@ -45,9 +45,13 @@ const Header: React.FC = () => {
             <li><a href="#services" className="nav-link" onClick={() => scrollToSection('services')}>Services</a></li>
             <li><a href="#projects" className="nav-link" onClick={() => scrollToSection('projects')}>Projects</a></li>
             <li><a href="#contact" className="nav-link" onClick={() => scrollToSection('contact')}>Contact</a></li>
+            <li>
+            <Link href="/gallery">Gallery</Link></li>
+
+
           </ul>
           <div className="header-actions">
-            <span className="header-phone">Call Us: +(080) 46055690</span>
+            <span className="header-phone">Call Us: + 08046055690</span>
             <button className="header-cta" onClick={() => scrollToSection('contact')}>
               Get In Touch
             </button>
