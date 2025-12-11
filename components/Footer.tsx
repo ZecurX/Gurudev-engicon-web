@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
       <div className="container">
         <div className="footer-content">
           <div className="footer-section footer-brand">
-            <h3>Gurudev Engicon Privite Limited</h3>
+            <h3>builderz</h3>
             <p className="footer-description">
               We are creators of transformative spaces that inspire, innovate, and endure.
             </p>
@@ -45,8 +45,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="footer-bottom">
-          <p className="footer-copyright-text">&copy; {currentYear} <strong>
-Gurudev Engicon Privite Limited</strong>. All Rights Reserved</p>
+          <p className="footer-copyright-text">&copy; {currentYear} <strong>Gurudev Engicon Privite Limited</strong>. All Rights Reserved</p>
           <p className="footer-developer">Developed by <strong>ZecurX</strong></p>
         </div>
       </div>
