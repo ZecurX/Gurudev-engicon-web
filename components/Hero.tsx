@@ -27,15 +27,9 @@ const Hero: React.FC = () => {
           
           <div className="hero-stats">
             <div className="stat-badge">
-              <div className="stat-number">15+</div>
+              <div className="stat-number">12+</div>
               <div className="stat-label">years of experience</div>
             </div>
-            <button className="watch-button">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M5 3.5L12 8L5 12.5V3.5Z"/>
-              </svg>
-              Watch
-            </button>
           </div>
         </div>
         

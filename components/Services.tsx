@@ -11,50 +11,50 @@ const Services: React.FC = () => {
   const services: Service[] = [
     {
       id: 1,
-      title: 'Engineering Services',
-      description: 'Complete engineering solutions across multiple disciplines',
+      title: 'Construction of Highways',
+      description: 'High-quality road infrastructure built for durability and efficiency',
       icon: '',
       features: [
-        'Structural Engineering',
-        'MEP Design',
-        'Project Planning',
-        'Technical Consultation'
+        'Highway design & alignment planning',
+        'Pavement construction & resurfacing',
+        'Drainage & safety infrastructure',
+        'Traffic management systems'
       ]
     },
     {
       id: 2,
-      title: 'Infrastructure Development',
-      description: 'Creating durable infrastructure that supports long-term growth',
+      title: 'Construction of Flyovers',
+      description: 'Advanced elevated structures for smooth urban mobility',
       icon: '',
       features: [
-        'Road & Highway Construction',
-        'Bridge Engineering',
-        'Urban Development',
-        'Water Supply Systems'
+        'RCC & PSC flyover construction',
+        'Foundation & piling works',
+          'Structural load analysis',
+         'Urban traffic flow optimization'
       ]
     },
     {
       id: 3,
-      title: 'Construction Management',
-      description: 'Full project execution and on-site management from start to finish',
+      title: 'Construction of Bridges',
+      description: 'Strong and reliable bridge solutions for all terrains',
       icon: '',
       features: [
-        'Project Coordination',
-        'Quality Control',
-        'Safety Management',
-        'Timeline Optimization'
+        'Bridge design & engineering',
+        'Pre-stressed concrete structures',
+        'River crossing & foundation works',
+        'Safety inspections & quality control'
       ]
     },
     {
       id: 4,
-      title: 'Consultancy',
-      description: 'Expert guidance to help you navigate complex engineering challenges',
+      title: 'Mega Highways and Road Construction',
+      description: 'Large-scale infrastructure projects executed with precision',
       icon: '',
       features: [
-        'Feasibility Studies',
-        'Technical Audits',
-        'Risk Assessment',
-        'Regulatory Compliance'
+        'Expressway & corridor development',
+        'Heavy earthwork & grading',
+        'Advanced machinery deployment',
+        'Project execution & compliance management'
       ]
     }
   ];
