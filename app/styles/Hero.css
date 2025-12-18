@@ -482,12 +482,14 @@
   align-items: center;
   gap: 2.5rem;
   justify-content: flex-start;
+  color: #ffffff;
 }
 
 .hero-stat {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  color: #ffffff;
 }
 
 .stat-value {
@@ -500,8 +502,12 @@
 
 .stat-label {
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.85);
   font-weight: 500;
+}
+
+.hero-stat span {
+  color: inherit;
 }
 
 .stat-divider {
