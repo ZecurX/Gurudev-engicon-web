@@ -92,7 +92,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div className="info-content">
                   <h4>Address</h4>
-                  <p>Corporate Office<br />Gurudev Engicon Private Limited<br />India</p>
+                  <p>Corporate Office<br />OLAPUR, PIRPAITY KAHALGAON BHAGALPUR Bhagalpur BR IN 813209<br />Bihar</p>
                 </div>
               </div>
 
@@ -104,7 +104,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div className="info-content">
                   <h4>Phone</h4>
-                  <p>+(080) 46055690</p>
+                  <p>+08046055690</p>
                 </div>
               </div>
 
@@ -116,7 +116,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div className="info-content">
                   <h4>Email</h4>
-                  <p>info@gurudevengicon.com</p>
+                  <p>PRAMODSINGHBHAGALPUR@GMAIL.COM</p>
                 </div>
               </div>
 

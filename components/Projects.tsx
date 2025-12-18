@@ -55,7 +55,7 @@ const Projects: React.FC = () => {
                 <h3 className="project-name">{project.title}</h3>
                 <p className="project-desc">{project.description}</p>
                 <button className="project-cta">
-                  <span>View More</span>
+                  <span>Get Quotation</span>
                   <svg className="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
