@@ -3,62 +3,126 @@ import '../app/styles/About.css';
 
 /**
  * About Component - Server Component
- * Company overview and mission statement
- * Pure static content - perfect for server-side rendering
+ * Company overview emphasizing trust, expertise, and track record
  */
 const About: React.FC = () => {
   return (
     <section className="about" id="about">
       <div className="about-container">
-        <div className="about-badge">ABOUT US</div>
-        <h2 className="about-title">Built on trust and excellence</h2>
-        <p className="about-intro">
-          We&apos;ve been shaping skylines and building communities for over four decades. 
-          Our commitment to quality craftsmanship and innovative design has made us 
-          a trusted partner in construction and development.
-        </p>
-        
         <div className="about-grid">
-          <div className="about-stats">
-            <div className="stat-item">
-              <div className="stat-number">12+</div>
-              <div className="stat-label">Years Experience</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">98%</div>
-              <div className="stat-label">Client Satisfaction</div>
+          <div className="about-content">
+            <span className="section-label">About Our Company</span>
+            <h2 className="about-title">
+              Building Infrastructure That Stands the Test of Time
+            </h2>
+            <p className="about-text">
+              Gurudev Engicon Private Limited is a trusted name in India&apos;s
+              infrastructure development sector. Established in 2012, we have
+              consistently delivered large-scale highway, flyover, and bridge
+              construction projects with precision, quality, and commitment to
+              timelines.
+            </p>
+            <p className="about-text">
+              Our experienced team of civil engineers, project managers, and
+              skilled workforce brings together decades of collective expertise.
+              We leverage modern construction methodologies, state-of-the-art
+              equipment, and rigorous quality control processes to ensure every
+              project meets the highest standards.
+            </p>
+
+            <div className="about-highlights">
+              <div className="highlight-item">
+                <div className="highlight-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                </div>
+                <div className="highlight-content">
+                  <h4>Government Approved</h4>
+                  <p>
+                    Registered contractor with PWD and NHAI for infrastructure
+                    projects
+                  </p>
+                </div>
+              </div>
+
+              <div className="highlight-item">
+                <div className="highlight-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </div>
+                <div className="highlight-content">
+                  <h4>Quality Certified</h4>
+                  <p>ISO 9001:2015 certified for quality management systems</p>
+                </div>
+              </div>
+
+              <div className="highlight-item">
+                <div className="highlight-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                </div>
+                <div className="highlight-content">
+                  <h4>On-Time Delivery</h4>
+                  <p>98% project completion rate within scheduled timelines</p>
+                </div>
+              </div>
             </div>
           </div>
-          
-          <div className="about-features">
-            <div className="feature-item">
-              <svg className="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 11L12 14L22 4M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <div>
-                <h3>Quality Assurance</h3>
-                <p>Every project meets the highest standards of excellence</p>
+
+          <div className="about-stats-panel">
+            <div className="stats-card">
+              <div className="stat-item">
+                <span className="stat-number">12+</span>
+                <span className="stat-label">Years of Experience</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">50+</span>
+                <span className="stat-label">Projects Completed</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">₹100Cr+</span>
+                <span className="stat-label">Project Value Delivered</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">200+</span>
+                <span className="stat-label">Skilled Professionals</span>
               </div>
             </div>
-            
-            <div className="feature-item">
-              <svg className="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 8V12L15 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <div>
-                <h3>On-Time Delivery</h3>
-                <p>We respect your time and deliver projects as promised</p>
-              </div>
-            </div>
-            
-            <div className="feature-item">
-              <svg className="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17 20H22V18C22 16.3431 20.6569 15 19 15C18.0444 15 17.1931 15.4468 16.6438 16.1429M17 20H7M17 20V18C17 17.3438 16.8736 16.717 16.6438 16.1429M7 20H2V18C2 16.3431 3.34315 15 5 15C5.95561 15 6.80686 15.4468 7.35625 16.1429M7 20V18C7 17.3438 7.12642 16.717 7.35625 16.1429M7.35625 16.1429C8.0935 14.301 9.89482 13 12 13C14.1052 13 15.9065 14.301 16.6438 16.1429M15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7ZM21 10C21 11.1046 20.1046 12 19 12C17.8954 12 17 11.1046 17 10C17 8.89543 17.8954 8 19 8C20.1046 8 21 8.89543 21 10ZM7 10C7 11.1046 6.10457 12 5 12C3.89543 12 3 11.1046 3 10C3 8.89543 3.89543 8 5 8C6.10457 8 7 8.89543 7 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <div>
-                <h3>Expert Team</h3>
-                <p>Skilled professionals dedicated to your success</p>
-              </div>
+
+            <div className="mission-card">
+              <h3>Our Mission</h3>
+              <p>
+                To contribute to India&apos;s infrastructure growth by
+                delivering world-class construction projects that connect
+                communities, drive economic development, and stand as testaments
+                to engineering excellence for generations to come.
+              </p>
             </div>
           </div>
         </div>

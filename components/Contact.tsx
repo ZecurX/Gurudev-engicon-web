@@ -6,26 +6,29 @@ import '../app/styles/Contact.css';
 
 /**
  * Contact Component - Client Component
- * Contact form and company contact information
- * Requires client-side rendering for form state management
+ * Professional contact section with form and business information
  */
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -35,7 +38,6 @@ const Contact: React.FC = () => {
     setError(null);
 
     try {
-      // Send to API route
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -48,12 +50,10 @@ const Contact: React.FC = () => {
 
       if (response.ok && data.success) {
         setIsSubmitted(true);
-        
-        // Reset form after 3 seconds
         setTimeout(() => {
           setFormData({ name: '', email: '', phone: '', message: '' });
           setIsSubmitted(false);
-        }, 3000);
+        }, 5000);
       } else {
         setError(data.message || 'Failed to send message. Please try again.');
       }
@@ -67,94 +67,179 @@ const Contact: React.FC = () => {
 
   return (
     <section className="contact" id="contact">
-      <div className="container">
-        <h2 className="section-title">Contact Us</h2>
-        <div className="title-underline"></div>
-        <p className="section-subtitle">
-          Let&apos;s talk about your next project
-        </p>
+      <div className="contact-container">
+        <div className="contact-header">
+          <span className="section-label">Get In Touch</span>
+          <h2 className="contact-title">Contact Us</h2>
+          <p className="contact-subtitle">
+            Have a project in mind? Contact our team to discuss your
+            requirements and get a detailed quote.
+          </p>
+        </div>
 
         <div className="contact-content">
           <div className="contact-info">
-            <h3>Get In Touch</h3>
-            <p>
-              Have questions? Want to discuss a project? We&apos;d love to hear from you 
-              and explore how we can help bring your vision to life.
-            </p>
-            
-            <div className="info-items">
+            <div className="info-card">
+              <h3>Corporate Office</h3>
               <div className="info-item">
-                <div className="info-icon-wrapper">
-                  <svg className="info-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <div className="info-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
                   </svg>
                 </div>
-                <div className="info-content">
-                  <h4>Address</h4>
-                  <p>Corporate Office<br />OLAPUR, PIRPAITY KAHALGAON BHAGALPUR Bhagalpur BR IN 813209<br />Bihar</p>
+                <div className="info-text">
+                  <span className="info-label">Address</span>
+                  <p>
+                    OLAPUR, PIRPAITY KAHALGAON
+                    <br />
+                    BHAGALPUR, Bihar - 813209
+                    <br />
+                    India
+                  </p>
                 </div>
               </div>
 
               <div className="info-item">
-                <div className="info-icon-wrapper">
-                  <svg className="info-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <div className="info-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                 </div>
-                <div className="info-content">
-                  <h4>Phone</h4>
-                  <p>+08046055690</p>
+                <div className="info-text">
+                  <span className="info-label">Phone</span>
+                  <p>+91 8046055690</p>
                 </div>
               </div>
 
               <div className="info-item">
-                <div className="info-icon-wrapper">
-                  <svg className="info-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <div className="info-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
                   </svg>
                 </div>
-                <div className="info-content">
-                  <h4>Email</h4>
-                  <p>PRAMODSINGHBHAGALPUR@GMAIL.COM</p>
+                <div className="info-text">
+                  <span className="info-label">Email</span>
+                  <p>info@gurudevengicon.com</p>
                 </div>
               </div>
 
               <div className="info-item">
-                <div className="info-icon-wrapper">
-                  <svg className="info-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                <div className="info-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
                   </svg>
                 </div>
-                <div className="info-content">
-                  <h4>Business Hours</h4>
-                  <p>Monday - Saturday: 9:00 AM - 6:00 PM<br />Sunday: Closed</p>
+                <div className="info-text">
+                  <span className="info-label">Business Hours</span>
+                  <p>
+                    Monday - Saturday: 9:00 AM - 6:00 PM
+                    <br />
+                    Sunday: Closed
+                  </p>
                 </div>
               </div>
+            </div>
+
+            <div className="quick-contact-card">
+              <h4>Need Immediate Assistance?</h4>
+              <p>Call us directly for urgent project inquiries</p>
+              <a href="tel:+918046055690" className="phone-link">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                +91 8046055690
+              </a>
             </div>
           </div>
 
           <div className="contact-form-wrapper">
+            <h3>Send Us a Message</h3>
             {isSubmitted ? (
               <div className="success-message">
-                <div className="success-icon">✓</div>
-                <h3>Thank You!</h3>
-                <p>We&apos;ve received your message and will get back to you soon.</p>
+                <div className="success-icon">
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                </div>
+                <h4>Message Sent Successfully!</h4>
+                <p>
+                  Thank you for contacting us. Our team will review your inquiry
+                  and get back to you within 24-48 business hours.
+                </p>
               </div>
             ) : (
               <form className="contact-form" onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="name">Full Name *</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Enter your name"
-                  />
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="name">Full Name *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="phone">Phone Number *</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      placeholder="+91 XXXXX XXXXX"
+                    />
+                  </div>
                 </div>
 
                 <div className="form-group">
@@ -171,19 +256,7 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="phone">Phone Number</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+91 XXXXX XXXXX"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="message">Message *</label>
+                  <label htmlFor="message">Project Details *</label>
                   <textarea
                     id="message"
                     name="message"
@@ -191,28 +264,57 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    placeholder="Tell us about your project requirements..."
+                    placeholder="Tell us about your project requirements, timeline, and any specific details..."
                   ></textarea>
                 </div>
 
                 {error && (
-                  <div className="error-message" style={{ 
-                    color: '#c53030', 
-                    padding: '0.75rem', 
-                    backgroundColor: '#fff5f5', 
-                    borderRadius: '4px',
-                    marginBottom: '1rem' 
-                  }}>
+                  <div className="error-message">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="8" x2="12" y2="12" />
+                      <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
                     {error}
                   </div>
                 )}
 
-                <button 
-                  type="submit" 
-                  className="btn btn-primary"
+                <button
+                  type="submit"
+                  className="submit-btn"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? (
+                    <>
+                      <span className="spinner"></span>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
+                        <path
+                          d="M4 10H16M16 10L11 5M16 10L11 15"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </>
+                  )}
                 </button>
               </form>
             )}

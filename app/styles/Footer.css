@@ -1,42 +1,69 @@
-/* Footer - Light Modern Design */
+/* Footer - Professional Corporate Design */
 .footer {
-  background: #f5f3ef;
-  color: #0a0a0a;
-  padding: 4rem 0 0;
-  border-top: 1px solid #e5e3df;
+  background: #0f172a;
+  color: #ffffff;
 }
 
-.footer-content {
+.footer-main {
+  padding: 4rem 0;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem;
   display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1.5fr;
-  gap: 4rem;
-  padding-bottom: 3.5rem;
+  grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+  gap: 3rem;
 }
 
 /* Brand Section */
-.footer-brand h3 {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-  color: #0a0a0a;
-  letter-spacing: -0.5px;
+.footer-brand {
+  padding-right: 2rem;
 }
 
-.footer-description {
-  color: #5a5a5a;
-  line-height: 1.7;
-  margin: 0;
-  font-size: 0.9rem;
-  max-width: 280px;
+.footer-logo {
+  height: 50px;
+  width: auto;
+  margin-bottom: 1.25rem;
+  filter: brightness(0) invert(1);
 }
 
-/* Section Headings */
-.footer-section h4 {
+.footer-tagline {
   font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 1.5rem;
+}
+
+.footer-certifications {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cert-badge {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  background: rgba(217, 119, 6, 0.2);
+  border: 1px solid rgba(217, 119, 6, 0.3);
+  border-radius: 4px;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #0a0a0a;
-  letter-spacing: 0;
+  color: #f59e0b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Section Headers */
+.footer-section h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #d97706;
+  display: inline-block;
 }
 
 /* Links */
@@ -47,118 +74,116 @@
 }
 
 .footer-links li {
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
 }
 
 .footer-links a {
-  color: #5a5a5a;
-  text-decoration: none;
-  transition: color 0.3s ease;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.9rem;
-  display: inline-block;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
-  color: #0a0a0a;
+  color: #f59e0b;
 }
 
-/* Contact Section */
-.footer-contact-section {
+/* Contact Items */
+.footer-contact {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-}
-
-.footer-contact-phone {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #0a0a0a;
-  margin-bottom: 0.25rem;
-}
-
-.footer-contact-email {
-  font-size: 0.95rem;
-  color: #0a0a0a;
-  margin: 0 0 1.25rem 0;
-  font-weight: 500;
-}
-
-.footer-social-links {
-  display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
 }
 
-.footer-social-links a {
-  color: #5a5a5a;
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: color 0.3s ease;
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
 }
 
-.footer-social-links a:hover {
-  color: #0a0a0a;
+.contact-item svg {
+  color: #d97706;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.contact-item span {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
 }
 
 /* Footer Bottom */
 .footer-bottom {
-  border-top: 1px solid #e5e3df;
-  padding: 1.75rem 0;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem 0;
+}
+
+.footer-bottom .footer-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   gap: 1rem;
 }
 
-.footer-copyright-text,
-.footer-developer {
-  margin: 0;
-  color: #5a5a5a;
+.copyright,
+.developer {
   font-size: 0.85rem;
-  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
 }
 
-.footer-copyright-text strong,
-.footer-developer strong {
-  color: #0a0a0a;
-  font-weight: 600;
+.copyright strong,
+.developer strong {
+  color: #ffffff;
+}
+
+.developer a {
+  color: #f59e0b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.developer a:hover {
+  color: #fbbf24;
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-  .footer {
-    padding: 3.5rem 0 0;
-  }
-  
-  .footer-content {
-    gap: 3rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .footer-content {
+@media (max-width: 1024px) {
+  .footer-container {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
   }
-  
+
   .footer-brand {
     grid-column: 1 / -1;
+    padding-right: 0;
   }
 }
 
 @media (max-width: 768px) {
-  .footer {
-    padding: 3rem 0 0;
+  .footer-main {
+    padding: 3rem 0;
   }
 
-  .footer-content {
+  .footer-container {
+    padding: 0 1.5rem;
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
-  .footer-bottom {
+  .footer-bottom .footer-container {
     flex-direction: column;
     text-align: center;
-    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-certifications {
+    flex-direction: column;
+  }
+
+  .cert-badge {
+    text-align: center;
   }
 }

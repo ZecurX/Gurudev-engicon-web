@@ -4,69 +4,79 @@ import '../app/styles/Services.css';
 
 /**
  * Services Component - Server Component
- * Showcase of company's core service offerings
- * Data is typed and rendered server-side for better SEO
+ * Professional showcase of infrastructure services
  */
 const Services: React.FC = () => {
   const services: Service[] = [
     {
       id: 1,
-      title: 'Construction of Highways',
-      description: 'High-quality road infrastructure built for durability and efficiency',
-      icon: '',
+      title: 'Highway Construction',
+      description:
+        'Complete highway development from planning to execution, delivering durable road infrastructure that connects regions and drives economic growth.',
+      icon: '🛣️',
       features: [
-        'Highway design & alignment planning',
+        'National & State Highway construction',
+        'Expressway & corridor development',
         'Pavement construction & resurfacing',
         'Drainage & safety infrastructure',
-        'Traffic management systems'
-      ]
+        'Traffic management systems',
+      ],
     },
     {
       id: 2,
-      title: 'Construction of Flyovers',
-      description: 'Advanced elevated structures for smooth urban mobility',
-      icon: '',
+      title: 'Flyover Construction',
+      description:
+        'Advanced elevated structures engineered for smooth urban mobility and reduced traffic congestion in growing cities.',
+      icon: '🌉',
       features: [
         'RCC & PSC flyover construction',
         'Foundation & piling works',
-          'Structural load analysis',
-         'Urban traffic flow optimization'
-      ]
+        'Structural load analysis & design',
+        'Urban traffic flow optimization',
+        'Seismic-resistant engineering',
+      ],
     },
     {
       id: 3,
-      title: 'Construction of Bridges',
-      description: 'Strong and reliable bridge solutions for all terrains',
-      icon: '',
+      title: 'Bridge Construction',
+      description:
+        'Robust bridge solutions designed for all terrains, ensuring safe passage across rivers, valleys, and challenging landscapes.',
+      icon: '🏗️',
       features: [
-        'Bridge design & engineering',
-        'Pre-stressed concrete structures',
-        'River crossing & foundation works',
-        'Safety inspections & quality control'
-      ]
+        'Pre-stressed concrete bridges',
+        'River crossing & deep foundation',
+        'Box culvert construction',
+        'Rehabilitation & strengthening',
+        'Quality testing & inspections',
+      ],
     },
     {
       id: 4,
-      title: 'Mega Highways and Road Construction',
-      description: 'Large-scale infrastructure projects executed with precision',
-      icon: '',
+      title: 'Road Infrastructure',
+      description:
+        'Comprehensive road development including rural roads, urban arteries, and industrial access roads with complete infrastructure.',
+      icon: '🚧',
       features: [
-        'Expressway & corridor development',
-        'Heavy earthwork & grading',
-        'Advanced machinery deployment',
-        'Project execution & compliance management'
-      ]
-    }
+        'Rural road connectivity (PMGSY)',
+        'Urban road development',
+        'Industrial access roads',
+        'Bituminous & concrete pavements',
+        'Road marking & signage',
+      ],
+    },
   ];
 
   return (
     <section className="services" id="services">
-      <div className="container">
-        <h2 className="section-title">Our Services</h2>
-        <div className="title-underline"></div>
-        <p className="section-subtitle">
-          From planning to completion, we&apos;re with you every step of the way
-        </p>
+      <div className="services-container">
+        <div className="services-header">
+          <span className="section-label">Our Expertise</span>
+          <h2 className="services-title">Infrastructure Services</h2>
+          <p className="services-subtitle">
+            From highways connecting states to flyovers decongesting cities, we
+            deliver infrastructure that transforms communities.
+          </p>
+        </div>
 
         <div className="services-grid">
           {services.map((service) => (
@@ -77,13 +87,44 @@ const Services: React.FC = () => {
               <ul className="service-features">
                 {service.features.map((feature, index) => (
                   <li key={index}>
-                    <span className="check-icon">✓</span>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
                     {feature}
                   </li>
                 ))}
               </ul>
             </div>
           ))}
+        </div>
+
+        <div className="services-cta">
+          <div className="cta-content">
+            <h3>Need a Custom Solution?</h3>
+            <p>
+              Our engineering team can assess your project requirements and
+              provide tailored infrastructure solutions.
+            </p>
+          </div>
+          <a href="#contact" className="cta-button">
+            Discuss Your Project
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path
+                d="M4 10H16M16 10L11 5M16 10L11 15"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
