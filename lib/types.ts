@@ -10,6 +10,7 @@ export interface Service {
   description: string;
   icon: string;
   features: string[];
+  galleryLink: string;
 }
 
 // Project types

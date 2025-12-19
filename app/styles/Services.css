@@ -1,4 +1,4 @@
-/* Services Section - Professional Infrastructure Design */
+/* Services Section */
 .services {
   padding: 6rem 0;
   background: #f8fafc;
@@ -37,15 +37,16 @@
   font-size: 1.1rem;
   color: #64748b;
   line-height: 1.7;
-  margin: 0;
 }
 
+/* Grid */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
+/* Card */
 .service-card {
   background: #ffffff;
   border-radius: 12px;
@@ -79,6 +80,7 @@
   margin-bottom: 1.5rem;
 }
 
+/* Features */
 .service-features {
   list-style: none;
   padding: 0;
@@ -99,12 +101,34 @@
   border-bottom: none;
 }
 
-.service-features li svg {
+.service-features svg {
   color: #059669;
-  flex-shrink: 0;
 }
 
-/* CTA Section */
+/* View Gallery Button */
+.view-gallery-btn {
+  margin-top: 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: #d97706;
+  border: 2px solid #d97706;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.view-gallery-btn:hover {
+  background: #d97706;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* CTA */
 .services-cta {
   margin-top: 4rem;
   background: #1a365d;
@@ -120,13 +144,11 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 0.5rem;
 }
 
 .cta-content p {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
-  margin: 0;
   max-width: 500px;
 }
 
@@ -138,19 +160,15 @@
   background: #d97706;
   color: #ffffff;
   border-radius: 6px;
-  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.2s ease;
-  white-space: nowrap;
 }
 
 .cta-button:hover {
   background: #b45309;
-  transform: translateY(-2px);
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 1024px) {
   .services-grid {
     grid-template-columns: 1fr;
@@ -159,45 +177,5 @@
   .services-cta {
     flex-direction: column;
     text-align: center;
-  }
-
-  .cta-content p {
-    max-width: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .services {
-    padding: 4rem 0;
-  }
-
-  .services-container {
-    padding: 0 1.5rem;
-  }
-
-  .services-title {
-    font-size: 2rem;
-  }
-
-  .service-card {
-    padding: 2rem;
-  }
-
-  .services-cta {
-    padding: 2rem;
-  }
-
-  .cta-content h3 {
-    font-size: 1.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .services-title {
-    font-size: 1.75rem;
-  }
-
-  .service-title {
-    font-size: 1.2rem;
   }
 }
