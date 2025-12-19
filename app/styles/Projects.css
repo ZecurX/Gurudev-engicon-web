@@ -188,7 +188,14 @@
 
 .stat-label {
   font-size: 0.9rem;
-  color: #64748b;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* Ensure Projects stats keep their own palette even if other sections share class names */
+.projects-stats .stat-label {
+  color: #0f172a;
+  font-weight: 700;
 }
 
 /* Responsive Design */
