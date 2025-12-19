@@ -14,6 +14,7 @@ const Services: React.FC = () => {
       description:
         'Complete highway development from planning to execution, delivering durable road infrastructure that connects regions and drives economic growth.',
       icon: '🛣️',
+      galleryLink: '/gallery#highway-gallery',
       features: [
         'National & State Highway construction',
         'Expressway & corridor development',
@@ -28,6 +29,7 @@ const Services: React.FC = () => {
       description:
         'Advanced elevated structures engineered for smooth urban mobility and reduced traffic congestion in growing cities.',
       icon: '🌉',
+      galleryLink: '/gallery#flyover-gallery',
       features: [
         'RCC & PSC flyover construction',
         'Foundation & piling works',
@@ -42,6 +44,7 @@ const Services: React.FC = () => {
       description:
         'Robust bridge solutions designed for all terrains, ensuring safe passage across rivers, valleys, and challenging landscapes.',
       icon: '🏗️',
+      galleryLink: '/gallery#bridge-gallery',
       features: [
         'Pre-stressed concrete bridges',
         'River crossing & deep foundation',
@@ -56,6 +59,7 @@ const Services: React.FC = () => {
       description:
         'Comprehensive road development including rural roads, urban arteries, and industrial access roads with complete infrastructure.',
       icon: '🚧',
+      galleryLink: '/gallery#road-gallery',
       features: [
         'Rural road connectivity (PMGSY)',
         'Urban road development',
@@ -82,8 +86,10 @@ const Services: React.FC = () => {
           {services.map((service) => (
             <div key={service.id} className="service-card">
               <div className="service-icon">{service.icon}</div>
+
               <h3 className="service-title">{service.title}</h3>
               <p className="service-description">{service.description}</p>
+
               <ul className="service-features">
                 {service.features.map((feature, index) => (
                   <li key={index}>
@@ -101,6 +107,20 @@ const Services: React.FC = () => {
                   </li>
                 ))}
               </ul>
+
+              {/* View Gallery Button */}
+              <a href={service.galleryLink} className="view-gallery-btn">
+                View Gallery
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M4 10H16M16 10L11 5M16 10L11 15"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
             </div>
           ))}
         </div>
@@ -113,6 +133,7 @@ const Services: React.FC = () => {
               provide tailored infrastructure solutions.
             </p>
           </div>
+
           <a href="#contact" className="cta-button">
             Discuss Your Project
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
