@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import '../app/styles/Header.css';
+import Link from "next/link";
 
 /**
  * Header Component - Client Component
@@ -63,7 +64,7 @@ const Header: React.FC = () => {
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                 <polyline points="22,6 12,13 2,6" />
               </svg>
-              PRAMODSINGHBHAGALPUR@GMAIL.COM
+              parmodsinghbhagalpur@gmail.com
             </span>
           </div>
           <div className="header-top-right">
@@ -158,6 +159,11 @@ const Header: React.FC = () => {
                   Contact
                 </a>
               </li>
+              <li>
+  <Link href="/gallery" className="nav-link">
+    Gallery
+  </Link>
+</li>
             </ul>
             <button
               className="header-cta"
