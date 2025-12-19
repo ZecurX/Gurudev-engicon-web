@@ -175,6 +175,58 @@ main {
   margin-top: 80px; /* Account for fixed header */
 }
 
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    margin-top: 72px; /* Shorter header height on mobile */
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+  }
+
+  main {
+    margin-top: 68px;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+}
+
 /* Global container class */
 .container {
   max-width: 1400px;
