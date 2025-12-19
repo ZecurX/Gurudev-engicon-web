@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import '../app/styles/Header.css';
-import Link from "next/link";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 /**
  * Header Component - Client Component
@@ -12,6 +13,7 @@ import Link from "next/link";
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +31,28 @@ const Header: React.FC = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
+    }
+  };
+
+  const handleCtaClick = () => {
+    if (pathname === '/') {
+      scrollToSection('contact');
+    } else {
+      window.location.href = '/#contact';
+    }
+  };
+
+  const handleNavClick = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    sectionId: string
+  ) => {
+    // On the home page, prevent navigation and smoothly scroll to the section
+    if (pathname === '/') {
+      event.preventDefault();
+      scrollToSection(sectionId);
+    } else {
+      // Let the anchor navigate to the homepage with the hash
       setIsMenuOpen(false);
     }
   };
@@ -89,9 +113,13 @@ const Header: React.FC = () => {
       {/* Main Navigation */}
       <div className="header-main">
         <div className="header-container">
-          <div className="logo" onClick={() => scrollToSection('home')}>
+          <a
+            href="/#home"
+            className="logo"
+            onClick={(event) => handleNavClick(event, 'home')}
+          >
             <img src="/logo.png" alt="Gurudev Engicon" className="logo-img" />
-          </div>
+          </a>
 
           <button
             className={`mobile-menu-btn ${isMenuOpen ? 'active' : ''}`}
@@ -107,68 +135,65 @@ const Header: React.FC = () => {
             <ul className="nav-links">
               <li>
                 <a
-                  href="#home"
+                  href="/#home"
                   className="nav-link"
-                  onClick={() => scrollToSection('home')}
+                  onClick={(event) => handleNavClick(event, 'home')}
                 >
                   Home
                 </a>
               </li>
               <li>
                 <a
-                  href="#about"
+                  href="/#services"
                   className="nav-link"
-                  onClick={() => scrollToSection('about')}
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="nav-link"
-                  onClick={() => scrollToSection('services')}
+                  onClick={(event) => handleNavClick(event, 'services')}
                 >
                   Services
                 </a>
               </li>
               <li>
                 <a
-                  href="#projects"
+                  href="/#projects"
                   className="nav-link"
-                  onClick={() => scrollToSection('projects')}
+                  onClick={(event) => handleNavClick(event, 'projects')}
                 >
                   Projects
                 </a>
               </li>
               <li>
                 <a
-                  href="#clients"
+                  href="/#clients"
                   className="nav-link"
-                  onClick={() => scrollToSection('clients')}
+                  onClick={(event) => handleNavClick(event, 'clients')}
                 >
                   Clients
                 </a>
               </li>
               <li>
                 <a
-                  href="#contact"
+                  href="/#about"
                   className="nav-link"
-                  onClick={() => scrollToSection('contact')}
+                  onClick={(event) => handleNavClick(event, 'about')}
+                >
+                  About Us
+                </a>
+              </li>
+              <li>
+                <Link href="/gallery" className="nav-link">
+                  Gallery
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="/#contact"
+                  className="nav-link"
+                  onClick={(event) => handleNavClick(event, 'contact')}
                 >
                   Contact
                 </a>
               </li>
-              <li>
-  <Link href="/gallery" className="nav-link">
-    Gallery
-  </Link>
-</li>
             </ul>
-            <button
-              className="header-cta"
-              onClick={() => scrollToSection('contact')}
-            >
+            <button className="header-cta" onClick={handleCtaClick}>
               Request Quote
             </button>
           </nav>
