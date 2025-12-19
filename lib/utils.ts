@@ -42,8 +42,9 @@ export function validateContactForm(data: ContactFormData): {
     errors.phone = 'Please enter a valid phone number';
   }
 
-  if (!data.message || data.message.trim().length < 10) {
-    errors.message = 'Message must be at least 10 characters long';
+  // Allow short messages; only ensure a value is present
+  if (!data.message || !data.message.trim()) {
+    errors.message = 'Message is required';
   }
 
   return {
