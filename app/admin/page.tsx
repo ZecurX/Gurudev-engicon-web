@@ -18,6 +18,16 @@ export default function AboutSectionManager() {
   const [isEditingDescription, setIsEditingDescription] = useState(false);
   const [images, setImages] = useState<string[]>([]);
 
+  const categories = [
+  'Highway Construction',
+  'Flyover Construction',
+  'Bridge Construction',
+  'Road Infrastructure',
+];
+
+const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+
+
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
@@ -56,62 +66,82 @@ export default function AboutSectionManager() {
 
       <div className={styles.content}>
         <div className={styles.leftColumn}>
+
+          {/* Category Selector */}
+<div className={styles.card}>
+  <h2 className={styles.cardTitle}>Category</h2>
+  <div className={styles.categoryGroup}>
+    {categories.map((cat) => (
+      <button
+        key={cat}
+        className={`${styles.categoryButton} ${
+          selectedCategory === cat ? styles.activeCategory : ''
+        }`}
+        onClick={() => setSelectedCategory(cat)}
+      >
+        {cat}
+      </button>
+    ))}
+  </div>
+</div>
+
           {/* Main Title Section */}
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
-              <h2 className={styles.cardTitle}>Main Title</h2>
-             <button
-  className={styles.editButton}
-  onClick={() => setIsEditingTitle(!isEditingTitle)}
-  aria-label="Edit main title"
-  title="Edit main title"
->
+<div className={styles.card}>
+  <div className={styles.cardHeader}>
+    <h2 className={styles.cardTitle}>Main Title</h2>
+    <button
+      className={styles.editButton}
+      onClick={() => setIsEditingTitle(true)}
+      aria-label="Edit main title"
+      title="Edit main title"
+    >
+      ✏️
     </button>
+  </div>
 
-            </div>
-            {isEditingTitle ? (
-              <textarea
-  className={styles.textarea}
-  value={mainTitle}
-  onChange={(e) => setMainTitle(e.target.value)}
-  onBlur={() => setIsEditingTitle(false)}
-  autoFocus
-  aria-label="Main title"
-  placeholder="Enter main title"
-/>
+  {isEditingTitle ? (
+    <textarea
+      className={styles.textarea}
+      value={mainTitle}
+      onChange={(e) => setMainTitle(e.target.value)}
+      onBlur={() => setIsEditingTitle(false)}
+      autoFocus
+      placeholder="Enter main title"
+    />
+  ) : (
+    <p className={styles.cardText}>{mainTitle}</p>
+  )}
+</div>
 
-            ) : (
-              <p className={styles.cardText}>{mainTitle}</p>
-            )}
-          </div>
 
           {/* Description Section */}
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
-              <h2 className={styles.cardTitle}>Description </h2>
-              <button
-  className={styles.editButton}
-  onClick={() => setIsEditingTitle(!isEditingTitle)}
-  aria-label="Edit Description"
-  title="Edit Description"
->
+<div className={styles.card}>
+  <div className={styles.cardHeader}>
+    <h2 className={styles.cardTitle}>Description</h2>
+    <button
+      className={styles.editButton}
+      onClick={() => setIsEditingDescription(true)}
+      aria-label="Edit description"
+      title="Edit description"
+    >
+      ✏️
     </button>
-            </div>
-            {isEditingDescription ? (
-              <textarea
-  className={styles.textarea}
-  value={mainTitle}
-  onChange={(e) => setMainTitle(e.target.value)}
-  onBlur={() => setIsEditingTitle(false)}
-  autoFocus
-  aria-label="Discription "
-  placeholder="Enter Discription"
-/>
+  </div>
 
-            ) : (
-              <p className={styles.cardText}>{description}</p>
-            )}
-          </div>
+  {isEditingDescription ? (
+    <textarea
+      className={`${styles.textarea} ${styles.textareaLarge}`}
+      value={description}
+      onChange={(e) => setDescription(e.target.value)}
+      onBlur={() => setIsEditingDescription(false)}
+      autoFocus
+      placeholder="Enter description"
+    />
+  ) : (
+    <p className={styles.cardText}>{description}</p>
+  )}
+</div>
+
         </div>
 
         {/* Image Gallery Section */}
