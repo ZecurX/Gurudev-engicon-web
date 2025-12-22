@@ -1,83 +1,48 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./gallery.css";
 
-const galleryData = {
-  highways: [
-    {
-      id: 1,
-      image: "/images/images5.png",
-      title: "National Highway Project",
-      description: "Large-scale highway construction with modern techniques.",
-    },
-    {
-      id: 2,
-      image: "/images/image6.png",
-      title: "Expressway Development",
-      description: "High-speed corridors for efficient transportation.",
-    },
-  ],
+interface GalleryImage {
+  id: string;
+  url: string;
+  title: string;
+  description: string;
+  width: number;
+  height: number;
+}
 
-  flyovers: [
-    {
-      id: 3,
-      image: "/images/image7.png",
-      title: "Urban Flyover",
-      description: "Reducing traffic congestion in city areas.",
-    },
-    {
-      id: 4,
-      image: "/images/image8.png",
-      title: "Elevated Road Structure",
-      description: "Advanced RCC flyover engineering.",
-    },
-  ],
-
-  bridges: [
-    {
-      id: 5,
-      image: "/images/images5.png",
-      title: "River Bridge",
-      description: "Strong foundations across water bodies.",
-    },
-    {
-      id: 6,
-      image: "/images/image6.png",
-      title: "Concrete Bridge",
-      description: "Durable and long-lasting bridge construction.",
-    },
-  ],
-
-  roads: [
-    {
-      id: 7,
-      image: "/images/image7.png",
-      title: "Urban Road Project",
-      description: "Smart roads with proper drainage and safety.",
-    },
-    {
-      id: 8,
-      image: "/images/image8.png",
-      title: "Rural Road Connectivity",
-      description: "Connecting villages with reliable roads.",
-    },
-  ],
-};
+interface GalleryData {
+  highways: GalleryImage[];
+  flyovers: GalleryImage[];
+  bridges: GalleryImage[];
+  roads: GalleryImage[];
+}
 
 export default function GalleryPage() {
+  // scroll refs
   const highwayRef = useRef<HTMLDivElement>(null);
   const flyoverRef = useRef<HTMLDivElement>(null);
   const bridgeRef = useRef<HTMLDivElement>(null);
   const roadRef = useRef<HTMLDivElement>(null);
 
-const scroll = (
-  ref: React.RefObject<HTMLDivElement | null>,
-  direction: "left" | "right"
-) => {
+  // gallery state
+  const [gallery, setGallery] = useState<GalleryData>({
+    highways: [],
+    flyovers: [],
+    bridges: [],
+    roads: [],
+  });
 
+  const [loading, setLoading] = useState(true);
+
+  // scroll handler
+  const scroll = (
+    ref: React.RefObject<HTMLDivElement | null>,
+    direction: "left" | "right"
+  ) => {
     if (!ref.current) return;
 
     ref.current.scrollBy({
@@ -85,6 +50,32 @@ const scroll = (
       behavior: "smooth",
     });
   };
+
+  // fetch gallery data
+  useEffect(() => {
+    fetch("/api/gallery")
+      .then((res) => res.json())
+      .then((data: GalleryData) => {
+        setGallery(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Gallery fetch failed:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="gallery-page">
+        <Header />
+        <main className="gallery-container">
+          <p style={{ textAlign: "center" }}>Loading gallery...</p>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="gallery-page">
@@ -96,149 +87,109 @@ const scroll = (
           A glimpse of our completed and ongoing infrastructure projects
         </p>
 
-        {/* HIGHWAY GALLERY */}
+        {/* HIGHWAY */}
         <section className="gallery-section">
           <h2 className="section-heading">Highway Construction</h2>
 
           <div className="scroll-wrapper">
-            <button
-              className="scroll-btn left"
-              onClick={() => scroll(highwayRef, "left")}
-            >
+            <button className="scroll-btn left" onClick={() => scroll(highwayRef, "left")}>
               ❮
             </button>
 
             <div className="gallery-horizontal" ref={highwayRef}>
-              {galleryData.highways.map((item) => (
+              {gallery.highways.map((item) => (
                 <div className="gallery-card" key={item.id}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="gallery-image"
-                  />
+                  <img src={item.url} alt={item.title} className="gallery-image" />
                   <div className="gallery-content">
                     <h3>{item.title}</h3>
-                    <p>{item.description}</p>
+                    {item.description && <p>{item.description}</p>}
                   </div>
                 </div>
               ))}
             </div>
 
-            <button
-              className="scroll-btn right"
-              onClick={() => scroll(highwayRef, "right")}
-            >
+            <button className="scroll-btn right" onClick={() => scroll(highwayRef, "right")}>
               ❯
             </button>
           </div>
         </section>
 
-        {/* FLYOVER GALLERY */}
+        {/* FLYOVER */}
         <section className="gallery-section">
           <h2 className="section-heading">Flyover Construction</h2>
 
           <div className="scroll-wrapper">
-            <button
-              className="scroll-btn left"
-              onClick={() => scroll(flyoverRef, "left")}
-            >
+            <button className="scroll-btn left" onClick={() => scroll(flyoverRef, "left")}>
               ❮
             </button>
 
             <div className="gallery-horizontal" ref={flyoverRef}>
-              {galleryData.flyovers.map((item) => (
+              {gallery.flyovers.map((item) => (
                 <div className="gallery-card" key={item.id}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="gallery-image"
-                  />
+                  <img src={item.url} alt={item.title} className="gallery-image" />
                   <div className="gallery-content">
                     <h3>{item.title}</h3>
-                    <p>{item.description}</p>
+                    {item.description && <p>{item.description}</p>}
                   </div>
                 </div>
               ))}
             </div>
 
-            <button
-              className="scroll-btn right"
-              onClick={() => scroll(flyoverRef, "right")}
-            >
+            <button className="scroll-btn right" onClick={() => scroll(flyoverRef, "right")}>
               ❯
             </button>
           </div>
         </section>
 
-        {/* BRIDGE GALLERY */}
+        {/* BRIDGE */}
         <section className="gallery-section">
           <h2 className="section-heading">Bridge Construction</h2>
 
           <div className="scroll-wrapper">
-            <button
-              className="scroll-btn left"
-              onClick={() => scroll(bridgeRef, "left")}
-            >
+            <button className="scroll-btn left" onClick={() => scroll(bridgeRef, "left")}>
               ❮
             </button>
 
             <div className="gallery-horizontal" ref={bridgeRef}>
-              {galleryData.bridges.map((item) => (
+              {gallery.bridges.map((item) => (
                 <div className="gallery-card" key={item.id}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="gallery-image"
-                  />
+                  <img src={item.url} alt={item.title} className="gallery-image" />
                   <div className="gallery-content">
                     <h3>{item.title}</h3>
-                    <p>{item.description}</p>
+                    {item.description && <p>{item.description}</p>}
                   </div>
                 </div>
               ))}
             </div>
 
-            <button
-              className="scroll-btn right"
-              onClick={() => scroll(bridgeRef, "right")}
-            >
+            <button className="scroll-btn right" onClick={() => scroll(bridgeRef, "right")}>
               ❯
             </button>
           </div>
         </section>
 
-        {/* ROAD INFRASTRUCTURE */}
+        {/* ROAD */}
         <section className="gallery-section">
           <h2 className="section-heading">Road Infrastructure</h2>
 
           <div className="scroll-wrapper">
-            <button
-              className="scroll-btn left"
-              onClick={() => scroll(roadRef, "left")}
-            >
+            <button className="scroll-btn left" onClick={() => scroll(roadRef, "left")}>
               ❮
             </button>
 
             <div className="gallery-horizontal" ref={roadRef}>
-              {galleryData.roads.map((item) => (
+              {gallery.roads.map((item) => (
                 <div className="gallery-card" key={item.id}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="gallery-image"
-                  />
+                  <img src={item.url} alt={item.title} className="gallery-image" />
                   <div className="gallery-content">
                     <h3>{item.title}</h3>
-                    <p>{item.description}</p>
+                    {item.description && <p>{item.description}</p>}
                   </div>
                 </div>
               ))}
             </div>
 
-            <button
-              className="scroll-btn right"
-              onClick={() => scroll(roadRef, "right")}
-            >
+            <button className="scroll-btn right" onClick={() => scroll(roadRef, "right")}>
               ❯
             </button>
           </div>
