@@ -39,14 +39,26 @@ async function fetchImagesFromFolder(folder: string): Promise<GalleryImage[]> {
       .max_results(50)
       .execute();
 
-    return result.resources.map((resource: CloudinaryResource) => ({
-      id: resource.public_id,
-      url: resource.secure_url,
-      title: resource.context?.custom?.title || 'Untitled',
-      description: resource.context?.custom?.description || '',
-      width: resource.width,
-      height: resource.height,
-    }));
+    return result.resources.map((resource: any) => {
+  const context =
+    resource.context?.custom ||
+    resource.context ||
+    {};
+
+  return {
+    id: resource.public_id,
+    url: resource.secure_url,
+   title:
+  context.title ||
+  folder.split("/").pop()?.replace("-", " ") ||
+  "Project Image",
+
+    description: context.description || "",
+    width: resource.width,
+    height: resource.height,
+  };
+});
+
   } catch (error) {
     console.error(`Error fetching from folder ${folder}:`, error);
     return [];
