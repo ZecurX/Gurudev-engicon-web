@@ -22,6 +22,21 @@ interface GalleryData {
   buildings: GalleryImage[];
 }
 
+// Category icons
+const CategoryIcon = () => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+    <polyline points="22 4 12 14.01 9 11.01" />
+  </svg>
+);
+
 export default function GalleryPage() {
   // scroll refs
   const highwayRef = useRef<HTMLDivElement>(null);
@@ -49,7 +64,7 @@ export default function GalleryPage() {
     if (!ref.current) return;
 
     ref.current.scrollBy({
-      left: direction === 'left' ? -300 : 300,
+      left: direction === 'left' ? -380 : 380,
       behavior: 'smooth',
     });
   };
@@ -68,212 +83,165 @@ export default function GalleryPage() {
       });
   }, []);
 
+  // Render gallery section
+  const renderSection = (
+    title: string,
+    images: GalleryImage[],
+    ref: React.RefObject<HTMLDivElement | null>,
+    id: string
+  ) => {
+    if (images.length === 0) return null;
+
+    return (
+      <section className="gallery-section" id={id}>
+        <div className="section-header">
+          <h2 className="section-heading">{title}</h2>
+          <span className="section-count">{images.length} Projects</span>
+        </div>
+
+        <div className="scroll-wrapper">
+          <button
+            className="scroll-btn left"
+            onClick={() => scroll(ref, 'left')}
+            aria-label="Scroll left"
+          >
+            ❮
+          </button>
+
+          <div className="gallery-horizontal" ref={ref}>
+            {images.map((item) => (
+              <div className="gallery-card" key={item.id}>
+                <div className="image-container">
+                  <img
+                    src={item.url}
+                    alt={item.title}
+                    className="gallery-image"
+                    loading="lazy"
+                  />
+                  <div className="image-overlay" />
+                </div>
+                <div className="gallery-content">
+                  <h3>{item.title}</h3>
+                  {item.description && <p>{item.description}</p>}
+                  <span className="project-tag">
+                    <CategoryIcon />
+                    Completed Project
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button
+            className="scroll-btn right"
+            onClick={() => scroll(ref, 'right')}
+            aria-label="Scroll right"
+          >
+            ❯
+          </button>
+        </div>
+      </section>
+    );
+  };
+
   if (loading) {
     return (
       <div className="gallery-page">
         <Header />
+        <div className="gallery-hero">
+          <h1 className="gallery-title">Project Gallery</h1>
+          <p className="gallery-subtitle">
+            Explore our portfolio of completed infrastructure projects
+          </p>
+        </div>
         <main className="gallery-container">
-          <p style={{ textAlign: 'center' }}>Loading gallery...</p>
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
+            <p className="loading-text">Loading gallery...</p>
+          </div>
         </main>
         <Footer />
       </div>
     );
   }
 
+  const totalProjects =
+    gallery.buildings.length +
+    gallery.highways.length +
+    gallery.flyovers.length +
+    gallery.bridges.length +
+    gallery.roads.length;
+
   return (
     <div className="gallery-page">
       <Header />
 
-      <main className="gallery-container">
-        <h1 className="gallery-title">Project Highlights</h1>
+      {/* Hero Section */}
+      <div className="gallery-hero">
+        <h1 className="gallery-title">Project Gallery</h1>
         <p className="gallery-subtitle">
-          A glimpse of our completed and ongoing infrastructure projects
+          Explore our portfolio of {totalProjects}+ completed infrastructure
+          projects showcasing our expertise in construction excellence
         </p>
 
-        {/* BUILDING */}
-        <section className="gallery-section">
-          <h2 className="section-heading">Building Construction</h2>
+        <div className="gallery-categories">
+          <a href="#building-gallery" className="category-pill">
+            Buildings
+          </a>
+          <a href="#highway-gallery" className="category-pill">
+            Highways
+          </a>
+          <a href="#flyover-gallery" className="category-pill">
+            Flyovers
+          </a>
+          <a href="#bridge-gallery" className="category-pill">
+            Bridges
+          </a>
+          <a href="#road-gallery" className="category-pill">
+            Roads
+          </a>
+        </div>
+      </div>
 
-          <div className="scroll-wrapper">
-            <button
-              className="scroll-btn left"
-              onClick={() => scroll(buildingRef, 'left')}
-            >
-              ❮
-            </button>
+      <main className="gallery-container">
+        {renderSection(
+          'Building Construction',
+          gallery.buildings,
+          buildingRef,
+          'building-gallery'
+        )}
+        {renderSection(
+          'Highway Construction',
+          gallery.highways,
+          highwayRef,
+          'highway-gallery'
+        )}
+        {renderSection(
+          'Flyover Construction',
+          gallery.flyovers,
+          flyoverRef,
+          'flyover-gallery'
+        )}
+        {renderSection(
+          'Bridge Construction',
+          gallery.bridges,
+          bridgeRef,
+          'bridge-gallery'
+        )}
+        {renderSection(
+          'Road Infrastructure',
+          gallery.roads,
+          roadRef,
+          'road-gallery'
+        )}
 
-            <div className="gallery-horizontal" ref={buildingRef}>
-              {gallery.buildings.map((item) => (
-                <div className="gallery-card" key={item.id}>
-                  <img
-                    src={item.url}
-                    alt={item.title}
-                    className="gallery-image"
-                  />
-                  <div className="gallery-content">
-                    <h3>{item.title}</h3>
-                    {item.description && <p>{item.description}</p>}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <button
-              className="scroll-btn right"
-              onClick={() => scroll(buildingRef, 'right')}
-            >
-              ❯
-            </button>
+        {totalProjects === 0 && (
+          <div className="empty-state">
+            <div className="empty-state-icon">📷</div>
+            <h4>No Projects Yet</h4>
+            <p>Project images will appear here once uploaded.</p>
           </div>
-        </section>
-
-        {/* HIGHWAY */}
-        <section className="gallery-section">
-          <h2 className="section-heading">Highway Construction</h2>
-
-          <div className="scroll-wrapper">
-            <button
-              className="scroll-btn left"
-              onClick={() => scroll(highwayRef, 'left')}
-            >
-              ❮
-            </button>
-
-            <div className="gallery-horizontal" ref={highwayRef}>
-              {gallery.highways.map((item) => (
-                <div className="gallery-card" key={item.id}>
-                  <img
-                    src={item.url}
-                    alt={item.title}
-                    className="gallery-image"
-                  />
-                  <div className="gallery-content">
-                    <h3>{item.title}</h3>
-                    {item.description && <p>{item.description}</p>}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <button
-              className="scroll-btn right"
-              onClick={() => scroll(highwayRef, 'right')}
-            >
-              ❯
-            </button>
-          </div>
-        </section>
-
-        {/* FLYOVER */}
-        <section className="gallery-section">
-          <h2 className="section-heading">Flyover Construction</h2>
-
-          <div className="scroll-wrapper">
-            <button
-              className="scroll-btn left"
-              onClick={() => scroll(flyoverRef, 'left')}
-            >
-              ❮
-            </button>
-
-            <div className="gallery-horizontal" ref={flyoverRef}>
-              {gallery.flyovers.map((item) => (
-                <div className="gallery-card" key={item.id}>
-                  <img
-                    src={item.url}
-                    alt={item.title}
-                    className="gallery-image"
-                  />
-                  <div className="gallery-content">
-                    <h3>{item.title}</h3>
-                    {item.description && <p>{item.description}</p>}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <button
-              className="scroll-btn right"
-              onClick={() => scroll(flyoverRef, 'right')}
-            >
-              ❯
-            </button>
-          </div>
-        </section>
-
-        {/* BRIDGE */}
-        <section className="gallery-section">
-          <h2 className="section-heading">Bridge Construction</h2>
-
-          <div className="scroll-wrapper">
-            <button
-              className="scroll-btn left"
-              onClick={() => scroll(bridgeRef, 'left')}
-            >
-              ❮
-            </button>
-
-            <div className="gallery-horizontal" ref={bridgeRef}>
-              {gallery.bridges.map((item) => (
-                <div className="gallery-card" key={item.id}>
-                  <img
-                    src={item.url}
-                    alt={item.title}
-                    className="gallery-image"
-                  />
-                  <div className="gallery-content">
-                    <h3>{item.title}</h3>
-                    {item.description && <p>{item.description}</p>}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <button
-              className="scroll-btn right"
-              onClick={() => scroll(bridgeRef, 'right')}
-            >
-              ❯
-            </button>
-          </div>
-        </section>
-
-        {/* ROAD */}
-        <section className="gallery-section">
-          <h2 className="section-heading">Road Infrastructure</h2>
-
-          <div className="scroll-wrapper">
-            <button
-              className="scroll-btn left"
-              onClick={() => scroll(roadRef, 'left')}
-            >
-              ❮
-            </button>
-
-            <div className="gallery-horizontal" ref={roadRef}>
-              {gallery.roads.map((item) => (
-                <div className="gallery-card" key={item.id}>
-                  <img
-                    src={item.url}
-                    alt={item.title}
-                    className="gallery-image"
-                  />
-                  <div className="gallery-content">
-                    <h3>{item.title}</h3>
-                    {item.description && <p>{item.description}</p>}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <button
-              className="scroll-btn right"
-              onClick={() => scroll(roadRef, 'right')}
-            >
-              ❯
-            </button>
-          </div>
-        </section>
+        )}
       </main>
 
       <Footer />
