@@ -11,6 +11,7 @@ interface GalleryImage {
 }
 
 const categories = [
+  'Building Construction',
   'Highway Construction',
   'Flyover Construction',
   'Bridge Construction',

@@ -1,6 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { adminLogin } from './actions';
 import Link from 'next/link';
 
@@ -16,7 +17,7 @@ function SubmitButton() {
 }
 
 export default function AdminLoginPage() {
-  const [state, formAction] = useFormState(adminLogin, initialState);
+  const [state, formAction] = useActionState(adminLogin, initialState);
 
   return (
     <div className="admin-login">

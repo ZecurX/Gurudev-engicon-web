@@ -10,6 +10,15 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
+      title: 'Rasalpur Police Station - Bhagalpur',
+      category: 'Building',
+      description:
+        'Construction of Rasalpur Police Station under Bihar Police Bhawan Nirmaan Nigam. Completed in December 2023 and inaugurated by SSP Anand Kumar on 12th January 2024.',
+      status: 'Completed',
+      image: '/images/building.jpg',
+    },
+    {
+      id: 2,
       title: 'National Highway Construction - NH-31',
       category: 'Highway',
       description:
@@ -18,7 +27,7 @@ const Projects: React.FC = () => {
       image: '/images/image7.png',
     },
     {
-      id: 2,
+      id: 3,
       title: 'Urban Flyover Project - Bhagalpur',
       category: 'Flyover',
       description:
@@ -27,7 +36,7 @@ const Projects: React.FC = () => {
       image: '/images/image6.png',
     },
     {
-      id: 3,
+      id: 4,
       title: 'River Bridge Construction',
       category: 'Bridge',
       description:
@@ -36,7 +45,7 @@ const Projects: React.FC = () => {
       image: '/images/image8.png',
     },
     {
-      id: 4,
+      id: 5,
       title: 'State Highway Expansion',
       category: 'Highway',
       description:
