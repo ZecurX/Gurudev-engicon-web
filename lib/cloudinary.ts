@@ -10,6 +10,7 @@ export default cloudinary;
 
 // Category mapping for folder organization
 export const GALLERY_CATEGORIES = {
+  'Building Construction': 'gurudev-gallery/buildings',
   'Highway Construction': 'gurudev-gallery/highways',
   'Flyover Construction': 'gurudev-gallery/flyovers',
   'Bridge Construction': 'gurudev-gallery/bridges',

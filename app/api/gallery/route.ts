@@ -29,6 +29,7 @@ interface GalleryData {
   flyovers: GalleryImage[];
   bridges: GalleryImage[];
   roads: GalleryImage[];
+  buildings: GalleryImage[];
 }
 
 async function fetchImagesFromFolder(folder: string): Promise<GalleryImage[]> {
@@ -40,25 +41,21 @@ async function fetchImagesFromFolder(folder: string): Promise<GalleryImage[]> {
       .execute();
 
     return result.resources.map((resource: any) => {
-  const context =
-    resource.context?.custom ||
-    resource.context ||
-    {};
+      const context = resource.context?.custom || resource.context || {};
 
-  return {
-    id: resource.public_id,
-    url: resource.secure_url,
-   title:
-  context.title ||
-  folder.split("/").pop()?.replace("-", " ") ||
-  "Project Image",
+      return {
+        id: resource.public_id,
+        url: resource.secure_url,
+        title:
+          context.title ||
+          folder.split('/').pop()?.replace('-', ' ') ||
+          'Project Image',
 
-    description: context.description || "",
-    width: resource.width,
-    height: resource.height,
-  };
-});
-
+        description: context.description || '',
+        width: resource.width,
+        height: resource.height,
+      };
+    });
   } catch (error) {
     console.error(`Error fetching from folder ${folder}:`, error);
     return [];
@@ -82,11 +79,12 @@ export async function GET(request: NextRequest) {
     }
 
     // Fetch all categories
-    const [highways, flyovers, bridges, roads] = await Promise.all([
+    const [highways, flyovers, bridges, roads, buildings] = await Promise.all([
       fetchImagesFromFolder(GALLERY_CATEGORIES['Highway Construction']),
       fetchImagesFromFolder(GALLERY_CATEGORIES['Flyover Construction']),
       fetchImagesFromFolder(GALLERY_CATEGORIES['Bridge Construction']),
       fetchImagesFromFolder(GALLERY_CATEGORIES['Road Infrastructure']),
+      fetchImagesFromFolder(GALLERY_CATEGORIES['Building Construction']),
     ]);
 
     const galleryData: GalleryData = {
@@ -94,6 +92,7 @@ export async function GET(request: NextRequest) {
       flyovers,
       bridges,
       roads,
+      buildings,
     };
 
     return NextResponse.json(galleryData);

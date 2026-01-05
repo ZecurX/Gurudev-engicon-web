@@ -9,6 +9,20 @@ const DEFAULT_CONTENT: Record<
   GalleryCategory,
   { titles: string[]; descriptions: string[] }
 > = {
+  'Building Construction': {
+    titles: [
+      'Government Building Project',
+      'Police Station Construction',
+      'Administrative Office Building',
+      'Institutional Building',
+      'Public Infrastructure Building',
+    ],
+    descriptions: [
+      'Quality government building construction with modern design.',
+      'Professional institutional building with structural excellence.',
+      'Administrative office built to highest construction standards.',
+    ],
+  },
   'Highway Construction': {
     titles: [
       'Highway Development Project',
@@ -106,13 +120,12 @@ export async function POST(request: NextRequest) {
       folder,
       resource_type: 'image',
       context: {
-  custom: {
-    title: finalTitle,
-    description: finalDescription,
-    category: category,
-  },
-},
-
+        custom: {
+          title: finalTitle,
+          description: finalDescription,
+          category: category,
+        },
+      },
     });
 
     return NextResponse.json({

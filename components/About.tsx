@@ -16,11 +16,12 @@ const About: React.FC = () => {
               Building Infrastructure That Stands the Test of Time
             </h2>
             <p className="about-text">
-              Gurudev Engicon Private Limited is a trusted name in India&apos;s
-              infrastructure development sector. Established in 2012, we have
-              consistently delivered large-scale highway, flyover, and bridge
-              construction projects with precision, quality, and commitment to
-              timelines.
+              Gurudev Engicon Private Limited (CIN: U45200BR2013PTC020037) is a
+              trusted name in India&apos;s infrastructure development sector.
+              Incorporated on December 7, 2013, and registered in Patna, Bihar,
+              we have consistently delivered large-scale highway, flyover,
+              bridge, and real estate construction projects with precision,
+              quality, and commitment to timelines.
             </p>
             <p className="about-text">
               Our experienced team of civil engineers, project managers, and
