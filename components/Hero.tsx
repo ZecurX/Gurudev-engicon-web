@@ -161,11 +161,6 @@ const Hero: React.FC = () => {
             </div>
             <div className="stat-divider"></div>
             <div className="hero-stat">
-              <span className="stat-value">50+</span>
-              <span className="stat-label">Projects Delivered</span>
-            </div>
-            <div className="stat-divider"></div>
-            <div className="hero-stat">
               <span className="stat-value">₹100Cr+</span>
               <span className="stat-label">Project Value</span>
             </div>

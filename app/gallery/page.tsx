@@ -22,21 +22,6 @@ interface GalleryData {
   buildings: GalleryImage[];
 }
 
-// Category icons
-const CategoryIcon = () => (
-  <svg
-    width="14"
-    height="14"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-  >
-    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-    <polyline points="22 4 12 14.01 9 11.01" />
-  </svg>
-);
-
 export default function GalleryPage() {
   // scroll refs
   const highwayRef = useRef<HTMLDivElement>(null);
@@ -73,12 +58,12 @@ export default function GalleryPage() {
   useEffect(() => {
     fetch('/api/gallery')
       .then((res) => res.json())
-      .then((data: GalleryData) => {
-        setGallery(data);
+      .then((galleryData) => {
+        setGallery(galleryData);
         setLoading(false);
       })
       .catch((err) => {
-        console.error('Gallery fetch failed:', err);
+        console.error('Fetch failed:', err);
         setLoading(false);
       });
   }, []);
@@ -96,7 +81,6 @@ export default function GalleryPage() {
       <section className="gallery-section" id={id}>
         <div className="section-header">
           <h2 className="section-heading">{title}</h2>
-          <span className="section-count">{images.length} Projects</span>
         </div>
 
         <div className="scroll-wrapper">
@@ -123,10 +107,6 @@ export default function GalleryPage() {
                 <div className="gallery-content">
                   <h3>{item.title}</h3>
                   {item.description && <p>{item.description}</p>}
-                  <span className="project-tag">
-                    <CategoryIcon />
-                    Completed Project
-                  </span>
                 </div>
               </div>
             ))}
@@ -151,7 +131,7 @@ export default function GalleryPage() {
         <div className="gallery-hero">
           <h1 className="gallery-title">Project Gallery</h1>
           <p className="gallery-subtitle">
-            Explore our portfolio of completed infrastructure projects
+            Explore our portfolio of infrastructure projects
           </p>
         </div>
         <main className="gallery-container">
@@ -180,7 +160,7 @@ export default function GalleryPage() {
       <div className="gallery-hero">
         <h1 className="gallery-title">Project Gallery</h1>
         <p className="gallery-subtitle">
-          Explore our portfolio of {totalProjects}+ completed infrastructure
+          Explore our portfolio of infrastructure
           projects showcasing our expertise in construction excellence
         </p>
 

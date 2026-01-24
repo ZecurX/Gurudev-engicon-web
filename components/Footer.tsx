@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import '../app/styles/Footer.css';
 
 /**
@@ -9,18 +10,20 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'About Us', href: '#about' },
-    { label: 'Services', href: '#services' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', href: '/#home' },
+    { label: 'Services', href: '/#services' },
+    { label: 'Projects', href: '/#projects' },
+    { label: 'Clients', href: '/#clients' },
+    { label: 'About Us', href: '/#about' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Contact', href: '/#contact' },
   ];
 
   const services = [
-    'Highway Construction',
-    'Flyover Construction',
-    'Bridge Construction',
-    'Road Infrastructure',
+    { label: 'Highway Construction', href: '/#services' },
+    { label: 'Flyover Construction', href: '/#services' },
+    { label: 'Bridge Construction', href: '/#services' },
+    { label: 'Road Infrastructure', href: '/#services' },
   ];
 
   return (
@@ -29,11 +32,13 @@ const Footer: React.FC = () => {
         <div className="footer-container">
           {/* Company Info */}
           <div className="footer-section footer-brand">
-            <img
-              src="/logo.png"
-              alt="Gurudev Engicon"
-              className="footer-logo"
-            />
+            <Link href="/#home">
+              <img
+                src="/logo.png"
+                alt="Gurudev Engicon"
+                className="footer-logo"
+              />
+            </Link>
             <p className="footer-tagline">
               Building India&apos;s infrastructure with precision engineering,
               quality construction, and unwavering commitment to excellence.
@@ -50,7 +55,7 @@ const Footer: React.FC = () => {
             <ul className="footer-links">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href}>{link.label}</a>
+                  <Link href={link.href}>{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -62,7 +67,7 @@ const Footer: React.FC = () => {
             <ul className="footer-links">
               {services.map((service, index) => (
                 <li key={index}>
-                  <a href="#services">{service}</a>
+                  <Link href={service.href}>{service.label}</Link>
                 </li>
               ))}
             </ul>

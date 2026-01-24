@@ -62,7 +62,7 @@ const Projects: React.FC = () => {
           <span className="section-label">Our Portfolio</span>
           <h2 className="projects-title">Featured Projects</h2>
           <p className="projects-subtitle">
-            A selection of our completed and ongoing infrastructure projects
+            A selection of our infrastructure projects
             demonstrating our capabilities and commitment to excellence.
           </p>
         </div>

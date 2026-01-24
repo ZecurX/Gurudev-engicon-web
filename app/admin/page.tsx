@@ -191,10 +191,10 @@ export default function AdminPanel() {
           prev.map((img) =>
             img.id === editingImage.id
               ? {
-                  ...img,
-                  title: editTitle.trim(),
-                  description: editDescription.trim(),
-                }
+                ...img,
+                title: editTitle.trim(),
+                description: editDescription.trim(),
+              }
               : img
           )
         );
@@ -242,9 +242,8 @@ export default function AdminPanel() {
           {categories.map((cat) => (
             <button
               key={cat.id}
-              className={`${styles.navItem} ${
-                selectedCategory === cat.id ? styles.active : ''
-              }`}
+              className={`${styles.navItem} ${selectedCategory === cat.id ? styles.active : ''
+                }`}
               onClick={() => setSelectedCategory(cat.id)}
             >
               <span className={styles.navIcon}>{cat.icon}</span>
