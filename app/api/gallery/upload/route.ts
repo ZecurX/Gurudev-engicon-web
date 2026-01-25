@@ -120,11 +120,9 @@ export async function POST(request: NextRequest) {
       folder,
       resource_type: 'image',
       context: {
-        custom: {
-          title: finalTitle,
-          description: finalDescription,
-          category: category,
-        },
+        title: finalTitle,
+        description: finalDescription,
+        category: category,
       },
     });
 
