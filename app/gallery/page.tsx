@@ -118,12 +118,23 @@ export default function GalleryPage() {
       projectMap.get(projectName)!.push(image);
     });
 
-    return Array.from(projectMap.entries()).map(([name, imgs]) => ({
-      name,
-      description: imgs[0]?.description || '',
-      images: imgs,
-      thumbnail: imgs[0]?.url || '',
-    }));
+    return Array.from(projectMap.entries()).map(([name, imgs]) => {
+      let description = imgs[0]?.description || '';
+
+      // Manual overrides for specific projects
+      if (name.includes('Rasalpur Police Station')) {
+        description = 'This police station was built by Gurudev Engicon in December 2023. Its inauguration was done by SSP Anand Kumar on 12th Jan 2024. This project was assigned under Bihar Police Bhawan Nirmaan Nigam.';
+      } else if (name.includes('Baranti Police Station')) {
+        description = 'This police station was built by Gurudev Engicon in April 2024. Its inauguration was done by SHO Manoj Kumar on 30th August 2024. This project was assigned under Bihar Police Bhawan Nirmaan Nigam.';
+      }
+
+      return {
+        name,
+        description,
+        images: imgs,
+        thumbnail: imgs[0]?.url || '',
+      };
+    });
   };
 
   const buildingProjects = groupImagesByProject(gallery.buildings);
@@ -188,9 +199,9 @@ export default function GalleryPage() {
                   {project.images.length > 1 && (
                     <div className="project-image-count">
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                        <circle cx="8.5" cy="8.5" r="1.5"/>
-                        <polyline points="21 15 16 10 5 21"/>
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21 15 16 10 5 21" />
                       </svg>
                       <span>{project.images.length}</span>
                     </div>
@@ -253,9 +264,9 @@ export default function GalleryPage() {
                   <div className="image-overlay" />
                   <div className="project-image-count">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                      <circle cx="8.5" cy="8.5" r="1.5"/>
-                      <polyline points="21 15 16 10 5 21"/>
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                      <circle cx="8.5" cy="8.5" r="1.5" />
+                      <polyline points="21 15 16 10 5 21" />
                     </svg>
                     <span>{project.images.length}</span>
                   </div>
